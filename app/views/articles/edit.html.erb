@@ -1,0 +1,23 @@
+<h1>Edit Article </h1>
+<% if @article.errors.any? %>
+<h2>Some Errors prevented your form to submit</h2>
+<ul>
+<% @article.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+</ul>
+<% end %>
+<% end %>
+<%= form_with(model: @article, local:true ) do |f| %>
+<p>
+<%= f.label :title%></br>
+<%= f.text_field :title %>
+</p>
+<p>
+<%= f.label :description%></br>
+<%= f.text_area :description %>
+</p>
+<p><%= f.submit %></p>
+<% end %>
+<p>
+<%= link_to 'return to article listing' , articles_path %>
+</P>
