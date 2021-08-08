@@ -1,0 +1,36 @@
+<div class="container">
+<% if @article.errors.any? %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <h4 class="alert-heading">OOPs!</h4>
+      <p>Some Errors prevented your form to submit</p>
+    <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <%end%>
+    </ul>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+ 
+  <%= form_with(model: @article, class: "shadow p-2 mb-2 bg-info rounded", local:true ) do |f| %>
+    <div class="row justify-content-md-center">
+        <div class="col-9">
+          <div class="mb-3 ">
+            <%= f.label :title, class:"form-label"%></br>
+            <%= f.text_field :title, class:"form-control shadow rounded" %>
+          </div>
+          <div class="mb-3 ">
+            <%= f.label :description, class:"form-label"%></br>
+            <%= f.text_area :description, class:"form-control shadow rounded", rows: "7"  %>
+          </div>
+          <div class="mb-3 row justify-content-md-center">
+          <%= f.submit class: "col-2 btn btn-outline-light"%>
+          </div>
+        </div>
+    </div>
+  <% end %>
+  <div class=" row justify-content-md-center">
+    <%= link_to '[cancel and return to article listing]' , articles_path, class: " col-3 text-info" %>
+  </div>
+</div>
+
