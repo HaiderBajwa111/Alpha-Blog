@@ -28,7 +28,7 @@
           <%= f.password_field :password, class:"form-control shadow rounded"  %>
         </div>
           <div class="mb-3 row justify-content-md-center">
-          <%= f.submit "Sign up", class: "col-2 btn btn-outline-light"%>
+          <%= f.submit(@user.new_record? ? "Sign up" : "Update Account", class: "col-2 btn btn-outline-light")%>
           </div>
         </div>
     </div>
