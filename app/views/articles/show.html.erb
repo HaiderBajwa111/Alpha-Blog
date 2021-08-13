@@ -4,13 +4,15 @@
     <div class="card text-center shadow rounded" >
       <div class="card-header fst-italic"> 
         <%=@article.user.username%>
+        <%= link_to gravatar_for(@article.user)%>
       </div>
       <div class="card-body">
         <h5 class="card-title text-success text-decoration-none"><%= @article.title %></h5>
         <p class="card-text"><%=@article.description %></p>
-
+        <% if logged_in? && (@article.user == current_user || current_user.admin?) %>
         <%= link_to 'Edit' , edit_article_path(@article.id),  class: "btn btn-outline-primary" %>
         <%= link_to 'Delete' , article_path(@article), method: :delete, class: "btn btn-outline-danger" %>
+        <% end %>
       </div>
       <div class="card-footer text-muted">
         <small>Created <%= time_ago_in_words(@article.created_at)%> ago, Edited <%=time_ago_in_words(@article.updated_at)%> ago</small>

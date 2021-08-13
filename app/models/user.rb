@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-
-  has_many :articles
+  before_save {self.email = email.downcase}
+  has_many :articles, dependent: :destroy
   has_secure_password
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: {minimum: 3 , maximum:32}
   VALID_EMAIL_EXPRESSION = /\A[a-z0-9\+\-_\.]+@[a-z\d\-.]+\.[a-z]+\z/i

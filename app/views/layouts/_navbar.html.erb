@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <%=link_to 'Bloggers', users_path, class: "nav-link"%>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -15,14 +15,33 @@
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li><%=link_to 'All Articles', articles_path, class: "dropdown-item"%></li>
-          <li><%=link_to 'Add Article', new_article_path, class:"dropdown-item"%></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <% if logged_in? %>
+          <li><%=link_to 'Create new Article', new_article_path, class:"dropdown-item"%></li>
+          <% end %>
         </ul>
       </li>
-      <li class="nav-item">
-        <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
+      <% if logged_in? %>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= current_user.username %><%="(admin)" if current_user.admin? %>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><%=link_to 'View profile', user_path(current_user), class: "dropdown-item"%></li>
+              <li><%=link_to 'Edit profile', edit_user_path(current_user), class:"dropdown-item"%></li>
+              <li><%= link_to 'Delete profile', user_path(current_user), method: :delete, data: { confirm: "Are you conform to delete your profile?" }, class: "dropdown-item text-danger"%></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+          <%= link_to 'Logout' , logout_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%=link_to 'Log In', login_path, class:"nav-link"%>
+          </li>
+          <li class="nav-item">
+          <%=link_to 'Sign up', signup_path, class:"nav-link"%>
+        </li>
+      <%end%>
     </ul>
     <form class="d-flex">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

@@ -1,0 +1,20 @@
+<h1 class="text-center mt-2">Create new </h1>
+<div class="container">
+<%= form_with(scope: :session, url: login_path, class: "shadow p-2 mb-2 bg-info rounded", local:true ) do |f| %>
+  <div class="row justify-content-md-center">
+      <div class="col-9">
+        <div class="mb-3 ">
+          <%= f.label :email, class:"form-label"%></br>
+          <%= f.text_field :email, class:"form-control shadow rounded", placeholder: "Enter your e-mail" %>
+        </div>
+        <div class="mb-3 ">
+        <%= f.label :password, class:"form-label"%></br>
+        <%= f.password_field :password, class:"form-control shadow rounded", placeholder: "Enter your password"  %>
+      </div>
+        <div class="mb-3 row justify-content-md-center">
+        <%= f.submit "Log in" , class: "col-2 btn btn-outline-light"%>
+        </div>
+      </div>
+  </div>
+<% end %>
+</div>
