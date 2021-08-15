@@ -7,7 +7,12 @@ class ArticlesController < ApplicationController
   end
 
   def index
+    
+   if @q = Article.ransack(params[:q])
+    @articles = @q.result.paginate(page: params[:page], per_page: 5)
+   else
     @articles = Article.paginate(page: params[:page], per_page: 5)
+   end
   end
 
   def new

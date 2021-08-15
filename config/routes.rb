@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  #resources :followings
+  post 'users/:id/follow', to: 'followings#follow', as: 'follow_user'
+  post 'users/:id/unfollow', to: 'followings#unfollow', as: 'unfollow_user'
   root 'pages#home'
   get 'about', to: 'pages#about'
   resources :articles , only: [:show, :index, :new, :create, :edit,:update, :destroy]
