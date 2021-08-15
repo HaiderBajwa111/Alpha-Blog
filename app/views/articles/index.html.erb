@@ -1,5 +1,14 @@
 <h1 class="text-center mt-2">Articles</h1>
 <%= will_paginate @articles , class:"flickr_pagination" %>
+<div class="row justify-content-md-center">
+ <div class="col-8 mt-2">
+  <%= search_form_for @q do |f| %>
+        <%= f.search_field :title_cont, class: "form-control", type:"search", placeholder: "Article Title", id: "search field" %>
+        <%= f.submit "Search", class: "btn btn-outline-success" %>
+        <%= link_to 'Clear', articles_path, class:"btn btn-outline-primary" %>
+  <% end %>
+  </div>
+</div>
 <%= render 'articles'%>
 <%= will_paginate @articles , class:"flickr_pagination my-2"%>
 
