@@ -37,7 +37,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @q = User.ransack(params[:q])
+    @users = @q.result.paginate(page: params[:page], per_page: 5)
   end
 
     def destroy
