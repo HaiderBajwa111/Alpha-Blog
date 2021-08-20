@@ -23,6 +23,10 @@
             <%= f.label :description, class:"form-label"%></br>
             <%= f.text_area :description, class:"form-control shadow rounded", rows: "7"  %>
           </div>
+          <div class="mb-3 ">
+          <%= f.label :category, class:"form-label"%></br>
+          <%= f.collection_select(:category_ids, Category.all, :id, :name, {  prompt: "make your category selection(optional)" }, { multiple: true, size: 3, class:"form-select shadow rounded"})  %>
+        </div>
           <div class="mb-3 row justify-content-md-center">
           <%= f.submit class: "col-2 btn btn-outline-light"%>
           </div>

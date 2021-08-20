@@ -1,5 +1,6 @@
 <h1 class="text-center mt-2">Articles</h1>
 <%= will_paginate @articles , class:"flickr_pagination" %>
+<div class = "container">
 <div class="row justify-content-md-center">
  <div class="col-8 mt-2">
   <%= search_form_for @q do |f| %>
@@ -8,6 +9,7 @@
         <%= link_to 'Clear', articles_path, class:"btn btn-outline-primary" %>
   <% end %>
   </div>
+</div>
 </div>
 <%= render 'articles'%>
 <%= will_paginate @articles , class:"flickr_pagination my-2"%>

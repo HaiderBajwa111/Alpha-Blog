@@ -5,6 +5,9 @@
       <div class="card-header fst-italic"> 
         <%=@article.user.username%>
         <%= link_to gravatar_for(@article.user)%>
+        <% if @article.categories.any? %>
+         <div class = "mt-2"><%= render @article.categories %> </div>
+        <% end %>
       </div>
       <div class="card-body">
         <h5 class="card-title text-success text-decoration-none"><%= @article.title %></h5>

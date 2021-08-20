@@ -2,8 +2,9 @@
 <div class="container ">
 <div class="row justify-content-md-center">
  <div class="col-8 mt-2">
+ <%= will_paginate @users , class:"flickr_pagination" %>
   <%= search_form_for @q do |f| %>
-        <%= f.search_field :username_cont, class: "form-control", type:"search", placeholder: "User Name", id: "search field" %>
+        <%= f.search_field :username_cont, class: "form-control mt-2", type:"search", placeholder: "User Name", id: "search field" %>
         <%= f.submit "Search", class: "btn btn-outline-success" %>
         <%= link_to 'Clear', articles_path, class:"btn btn-outline-primary" %>
   <% end %>
@@ -35,4 +36,6 @@
       </div>
     </div>
     <% end %>
+    <%= will_paginate @users , class:"flickr_pagination" %>
+
 </div>
